@@ -1,16 +1,15 @@
 import { Json } from "sequelize/lib/utils";
-import { User, Role } from "../Models/models.js";
+import { User} from "../Models/models.js";
 import { generateToken, validateToken } from "../utils/tokens.js";
 
 class UserControllers {
   createUser = async (req, res) => {
     try {
-      const { name, password, mail, roleId } = req.body;
+      const { name, password, mail} = req.body;
       const { name: username } = await User.create({
         name,
         password,
         mail,
-        roleId,
       });
       res.status(200).send({ success: true, message: username });
     } catch (error) {
@@ -36,13 +35,7 @@ class UserControllers {
         where: {
           id,
         },
-        attributes: ["id", "name", "mail", "roleId"],
-        include: [
-          {
-            model: Role,
-            attributes: ["name"],
-          },
-        ],
+        attributes: ["id", "name", "mail"],
       });
       res.status(200).send({ success: true, message: data });
     } catch (error) {

@@ -40,14 +40,14 @@ const movieSeed = async () => {
     { title: 'The Lion King', director: 'Roger Allers', year: 1994, categoryId: 9, img: 'https://i.ebayimg.com/images/g/IogAAOSwd49i-5n8/s-l1200.jpg'},
     { title: 'Inglourious Basterds', director: 'Quentin Tarantino', year: 2009, categoryId: 1, img: 'https://m.media-amazon.com/images/M/MV5BOTJiNDEzOWYtMTVjOC00ZjlmLWE0NGMtZmE1OWVmZDQ2OWJhXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_FMjpg_UX1000_.jpg' },
     { title: 'The Avengers', director: 'Joss Whedon', year: 2012, categoryId: 1, img: 'https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg' },
-    { title: 'The Social Network', director: 'David Fincher', year: 2010, category: 'Drama', img: 'https://image.tmdb.org/t/p/original/n0ybibhJtQ5icDqTp8eRytcIHJx.jpg' },
-    { title: 'Interstellar', director: 'Christopher Nolan', year: 2014, category: 'Ciencia Ficción', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRE8xZbi8r7ImwqImi3Wow7AoKwATmbFldLmtbbu5O9w&s'},
-    { title: 'The Dark Knight Rises', director: 'Christopher Nolan', year: 2012, category: 'Acción', img: 'https://m.media-amazon.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_FMjpg_UX1000_.jpg' },
-    { title: 'The Shawshank Redemption', director: 'Frank Darabont', year: 1994, category: 'Drama', img: 'https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg' },
-    { title: 'The Wolf of Wall Street', director: 'Martin Scorsese', year: 2013, category: 'Comedia', img: 'https://m.media-amazon.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_.jpg' },
-    { title: 'The Great Gatsby', director: 'Baz Luhrmann', year: 2013, category: 'Drama', img: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/miniature-schnauzer-art-canvas-print-the-great-gatsby-movie-poster-sandra-sij.jpg' },
-    { title: 'The Revenant', director: 'Alejandro González Iñárritu', year: 2015, category: 'Aventura', img: 'https://m.media-amazon.com/images/I/A1BjliXNDPL.jpg' },
-    { title: 'La La Land', director: 'Damien Chazelle', year: 2016, category: 'Musical', img: 'https://m.media-amazon.com/images/I/71-u32-oOaL._AC_UF894,1000_QL80_DpWeblab_.jpg' },
+    { title: 'The Social Network', director: 'David Fincher', year: 2010, categoryId: 3, img: 'https://image.tmdb.org/t/p/original/n0ybibhJtQ5icDqTp8eRytcIHJx.jpg' },
+    { title: 'Interstellar', director: 'Christopher Nolan', year: 2014, categoryId: 6, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRE8xZbi8r7ImwqImi3Wow7AoKwATmbFldLmtbbu5O9w&s'},
+    { title: 'The Dark Knight Rises', director: 'Christopher Nolan', year: 2012, categoryId: 1, img: 'https://m.media-amazon.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_FMjpg_UX1000_.jpg' },
+    { title: 'The Shawshank Redemption', director: 'Frank Darabont', year: 1994, categoryId: 3, img: 'https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg' },
+    { title: 'The Wolf of Wall Street', director: 'Martin Scorsese', year: 2013, categoryId: 2, img: 'https://m.media-amazon.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_.jpg' },
+    { title: 'The Great Gatsby', director: 'Baz Luhrmann', year: 2013, categoryId: 3, img: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/miniature-schnauzer-art-canvas-print-the-great-gatsby-movie-poster-sandra-sij.jpg' },
+    { title: 'The Revenant', director: 'Alejandro González Iñárritu', year: 2015, categoryId: 1, img: 'https://m.media-amazon.com/images/I/A1BjliXNDPL.jpg' },
+    { title: 'La La Land', director: 'Damien Chazelle', year: 2016, categoryId: 8, img: 'https://m.media-amazon.com/images/I/71-u32-oOaL._AC_UF894,1000_QL80_DpWeblab_.jpg' },
     ];
   
     await Movie.bulkCreate(movies);

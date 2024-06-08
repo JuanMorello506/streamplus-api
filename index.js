@@ -4,7 +4,7 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser"
 import dbConnection from "./src/dbConnection/dbConnection.js";
 import {SERVER_PORT} from "./src/config/config.js"
-// import { roleSeed } from "./seed/roleSeed.js";
+import { seedDatabase } from "./src/seed/dbseed.js";
 
 
 
@@ -23,8 +23,7 @@ app.use((req, res, next) => {
 });
 
 await dbConnection.sync({force:false})
-// await roleSeed()
-// await userSeed()
+await seedDatabase()
 
 
 

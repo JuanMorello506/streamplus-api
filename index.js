@@ -1,9 +1,9 @@
 import express from "express";
-import routes from "./routes/routes.js";
+import routes from "./src/routes/routes.js";
 import morgan from "morgan";
 import cookieParser from "cookie-parser"
-import dbConnection from "./dbConnection/dbConnection.js";
-import {SERVER_PORT} from "./config/config.js"
+import dbConnection from "./src/dbConnection/dbConnection.js";
+import {SERVER_PORT} from "./src/config/config.js"
 // import { roleSeed } from "./seed/roleSeed.js";
 
 

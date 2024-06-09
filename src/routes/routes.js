@@ -7,8 +7,8 @@ import commentRoutes from "./commentRoutes.js";
 const routes = Router();
 
 
-routes.use("streamplus/user", logger, userRoutes);
-routes.use("streamplus/category", logger, categoryRoutes);
-routes.use("streamplus/comment", logger, commentRoutes);
+routes.use("/streamplus/user", logger, userRoutes);
+routes.use("/streamplus/category", logger, categoryRoutes);
+routes.use("/streamplus/comment", logger, commentRoutes);
 
 export default routes;

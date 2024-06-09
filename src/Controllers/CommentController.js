@@ -3,9 +3,15 @@ import { Comment } from "../Models/models.js";
 class CommentControllers {
   createComment = async (req, res) => {
     try {
-      const { comment, rating } = req.body;
-      const { comment: userComment, rating: userRating } = await Comment.create({
-        comment, rating
+      const { comment, rating, userId, movieId } = req.body;
+        if (!comment || !rating || !userId || !movieId) {
+            throw new Error("Parametros insuficientes");
+        }
+        if (rating < 0 || rating > 5) {
+            throw new Error("Rating debe ser un valor entre 0 y 5");
+        }
+      const { comment: userComment, rating: userRating, userId: user, movieId: movie } = await Comment.create({
+        comment, rating, userId, movieId
       });
       res.status(200).send({ success: true, message: { comment: userComment, rating: userRating} });
     } catch (error) {

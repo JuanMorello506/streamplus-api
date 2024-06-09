@@ -5,13 +5,13 @@ import { generateToken, validateToken } from "../utils/tokens.js";
 class UserControllers {
   createUser = async (req, res) => {
     try {
-      const { name, password, mail} = req.body;
-      const { name: username } = await User.create({
-        name,
+      const { userName, password, mail} = req.body;
+      const { userName: name } = await User.create({
+        userName,
         password,
         mail,
       });
-      res.status(200).send({ success: true, message: username });
+      res.status(200).send({ success: true, message: name });
     } catch (error) {
       res.status(400).send({ success: false, message: error });
     }

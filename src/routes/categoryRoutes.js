@@ -7,6 +7,7 @@ const categoryControllers = new CategoryControllers();
 const categoryRoutes = Router();
 
 categoryRoutes.use(validateLogin);
+categoryRoutes.post("/", categoryControllers.createCategory);
 categoryRoutes.get("/", categoryControllers.getAllCategories);
 categoryRoutes.get("/:id", categoryControllers.getCategoryById);
 categoryRoutes.put("/:id", categoryControllers.updateCategory);

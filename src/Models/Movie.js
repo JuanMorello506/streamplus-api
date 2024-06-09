@@ -28,6 +28,7 @@ Movie.init(
   {
     sequelize: dbConnection,
     modelName: "Movie",
+    timestamps: false
   }
 );
 

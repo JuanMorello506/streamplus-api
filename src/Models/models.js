@@ -3,16 +3,20 @@ import Movie from "./Movie.js";
 import Comment from "./Comment.js";
 import Category from "./Category.js";
 
-Category.belongsTo(Movie, {
-	foreignKey: "movieId"
+Category.hasMany(Movie, {
+	foreignKey: "categoryId"
+})
+
+Movie.belongsTo(Category, {
+	foreignKey: "categoryId"
 })
 
 Movie.hasMany(Comment, {
 	foreignKey: "movieId"
 })
 
-Movie.belongsToMany(User, { through: 'Favourites', foreignKey: "userId" })
-User.belongsToMany(Movie, { through: 'Favourites', foreignKey: "movieId" })
+Movie.belongsToMany(User, { through: 'Favourites', foreignKey: "userId", timestamps: false })
+User.belongsToMany(Movie, { through: 'Favourites', foreignKey: "movieId", timestamps: false })
 
 Comment.belongsTo(Movie, {
 	foreignKey: "movieId"

@@ -5,6 +5,11 @@ class Category extends Model {}
 
 Category.init(
   {
+    id: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+      autoIncrement: false,
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -14,7 +19,7 @@ Category.init(
   {
     sequelize: dbConnection,
     modelName: "Category",
-    timestamps: false
+    timestamps: false,
   }
 );
 

@@ -3,15 +3,15 @@ import { Movie } from "../Models/models.js";
 class MoviesController {
   createMovie = async (req, res) => {
     try {
-      const { title, director, year, img, MovieId  } = req.body;
-      const Movie = await Movie.create({
+      const { title, director, year, img, categoryId  } = req.body;
+      const movie = await Movie.create({
         title,
         director,
         year,
         img,
-        MovieId
+        categoryId
       });
-      res.status(200).send({ success: true, message: Movie });
+      res.status(200).send({ success: true, message: movie });
     } catch (error) {
       res.status(400).send({ success: false, message: error.message });
     }
@@ -20,7 +20,7 @@ class MoviesController {
   getAllMovies = async (req, res) => {
     try {
       const data = await Movie.findAll({
-        attributes: ["id", "title", "director", "year", "img", "MovieId"],
+        attributes: ["id", "title", "director", "year", "img", "categoryId"],
       });
       res.status(200).send({ success: true, message: data });
     } catch (error) {

@@ -20,7 +20,7 @@ class UserControllers {
   getAllUsers = async (req, res) => {
     try {
       const data = await User.findAll({
-        attributes: ["id", "name", "mail"],
+        attributes: ["id", "userName", "mail"],
       });
       res.status(200).send({ success: true, message: data });
     } catch (error) {
@@ -35,7 +35,7 @@ class UserControllers {
         where: {
           id,
         },
-        attributes: ["id", "name", "mail"],
+        attributes: ["id", "userName", "mail"],
       });
       res.status(200).send({ success: true, message: data });
     } catch (error) {
@@ -46,8 +46,8 @@ class UserControllers {
   updateUser = async (req, res) => {
     try {
       const { id } = req.params;
-      const { name, mail } = req.body;
-      const data = await User.update({ name, mail }, { where: { id } });
+      const { userName, mail } = req.body;
+      const data = await User.update({ userName, mail }, { where: { id } });
       res.status(200).send({ success: true, message: data });
     } catch (error) {
       res.status(400).send({ success: false, message: error });
@@ -79,7 +79,7 @@ class UserControllers {
 
       const payload = {
         id: data.id,
-        name: data.name,
+        userName: data.userName,
       };
 
       const token = generateToken(payload);

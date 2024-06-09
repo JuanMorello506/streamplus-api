@@ -48,6 +48,7 @@ const movieSeed = async () => {
 		{ title: 'The Great Gatsby', director: 'Baz Luhrmann', year: 2013, categoryId: 'DR', img: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/miniature-schnauzer-art-canvas-print-the-great-gatsby-movie-poster-sandra-sij.jpg' },
 		{ title: 'The Revenant', director: 'Alejandro González Iñárritu', year: 2015, categoryId: 'AC', img: 'https://m.media-amazon.com/images/I/A1BjliXNDPL.jpg' },
 		{ title: 'La La Land', director: 'Damien Chazelle', year: 2016, categoryId: 'MU', img: 'https://m.media-amazon.com/images/I/71-u32-oOaL._AC_UF894,1000_QL80_DpWeblab_.jpg' },
+		{ title: "Parásitos", director: "Bong Joon-ho", year: 2019, categoryId: "DR", img: "https://image.tmdb.org/t/p/original/5uz9Se5HBxxPdJY38rPfyWUyjDZ.jpg" },
 	];
 
 	await Movie.bulkCreate(movies);

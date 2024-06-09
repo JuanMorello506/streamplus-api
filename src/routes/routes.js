@@ -2,6 +2,7 @@ import { Router } from "express";
 import userRoutes from "./userRoutes.js";
 import { logger } from "../middlewares/middlewares.js";
 import categoryRoutes from "./categoryRoutes.js";
+import commentRoutes from "./commentRoutes.js";
 
 const routes = Router();
 

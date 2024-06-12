@@ -56,8 +56,13 @@ const movieSeed = async () => {
 
 
 export const seedDatabase = async () => {
-	await categorySeed();
-	await movieSeed();
+	if(Category.findAll().length <= 0){
+		await categorySeed();
+	}
+
+	if(Movie.findAll().length <= 0){
+		await movieSeed();
+	}
 };
 
 seedDatabase().then(() => {

@@ -1,6 +1,13 @@
 import { Movie, Category, User, Comment } from "../Models/models.js";
 
 const categorySeed = async () => {
+
+	const count = await Category.count();
+	if (count > 0) {
+	  console.log('Categorías ya existen en la base de datos, omitiendo la precarga.');
+	  return;
+	}
+
 	const categories = [
 		{ id: 'AC', name: "Acción" },
 		{ id: 'CO', name: "Comedia" },
@@ -18,6 +25,14 @@ const categorySeed = async () => {
 };
 
 const movieSeed = async () => {
+
+	const count = await Movie.count();
+	if (count > 0) {
+	  console.log('Películas ya existen en la base de datos, omitiendo la precarga.');
+	  return;
+	}
+  
+
 	const movies = [
 		{ title: 'Forrest Gump', director: 'Robert Zemeckis', year: 1994, categoryId: 'DR', img: 'https://i.pinimg.com/736x/a8/39/7d/a8397dcfdf56fc342c3712a91e186575.jpg' },
 		{ title: 'The Godfather', director: 'Francis Ford Coppola', year: 1972, categoryId: 'AC', img: 'https://i.ebayimg.com/images/g/X~cAAOSwz2ZiaB2w/s-l1200.jpg' },
@@ -78,6 +93,13 @@ const movieSeed = async () => {
 };
 
 const userSeed = async () => {
+
+	const count = await User.count();
+	if (count > 0) {
+	  console.log('Usuarios ya existen en la base de datos, omitiendo la precarga.');
+	  return;
+	}
+
 	const users = [
 		{ id: 1, userName: 'Diego Forlan', password: 'password123', mail: 'dforlan@gmail.com' },
 		{ id: 2, userName: 'Leo Messi', password: 'password456', mail: 'lmessi@gmail.com' },
@@ -90,6 +112,13 @@ const userSeed = async () => {
 };
 
 const commentSeed = async () => {
+
+	const count = await Comment.count();
+	if (count > 0) {
+	  console.log('Comentarios ya existen en la base de datos, omitiendo la precarga.');
+	  return;
+	}
+
 	const comments = [
 		{ id: 1, comment: '¡Gran película!', rating: 5, movieId: 1, userId: 1 },
 		{ id: 2, comment: 'No está mal, pero podría ser mejor', rating: 3, movieId: 2, userId: 2 },
@@ -108,15 +137,14 @@ const commentSeed = async () => {
 };
 
 
-export const seedDatabase = async () => {
-	await categorySeed();
-	await movieSeed();
-	await userSeed();
-	await commentSeed();
+export const seed = async () => {
+	try {
+		await categorySeed();
+		await movieSeed();
+		await userSeed();
+		await commentSeed();
+		console.log('Precarga con exito');
+	} catch (e) {
+		console.error('Precarga fallida:', error);
+	}
 };
-
-seedDatabase().then(() => {
-	console.log('Precarga con exito');
-}).catch(error => {
-	console.error('Precarga fallida:', error);
-});

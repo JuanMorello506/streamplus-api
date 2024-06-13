@@ -19,7 +19,7 @@ Category.init(
   {
     sequelize: dbConnection,
     modelName: "Category",
-    timestamps: false,
+    timestamps: false
   }
 );
 

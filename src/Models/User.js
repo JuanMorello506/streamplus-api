@@ -30,6 +30,7 @@ User.init(
   {
     sequelize: dbConnection,
     modelName: "User",
+    timestamps: false
   }
 );
 

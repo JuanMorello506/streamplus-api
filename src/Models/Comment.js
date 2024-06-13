@@ -19,6 +19,7 @@ Comment.init(
   {
     sequelize: dbConnection,
     modelName: "Comment",
+    timestamps: false
   }
 );
 

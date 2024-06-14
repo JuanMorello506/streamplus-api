@@ -1,105 +1,105 @@
 import { Json } from "sequelize/lib/utils";
-import { User} from "../Models/models.js";
+import { User } from "../Models/models.js";
 import { generateToken, validateToken } from "../utils/tokens.js";
 
 class UserControllers {
-  createUser = async (req, res) => {
-    try {
-      const { userName, password, mail} = req.body;
-      const { userName: name } = await User.create({
-        userName,
-        password,
-        mail,
-      });
-      res.status(200).send({ success: true, message: name });
-    } catch (error) {
-      res.status(400).send({ success: false, message: error });
-    }
-  };
+	createUser = async (req, res) => {
+		try {
+			const { userName, password, mail } = req.body;
+			const { userName: name } = await User.create({
+				userName,
+				password,
+				mail,
+			});
+			res.status(200).send({ success: true, message: name });
+		} catch (error) {
+			res.status(400).send({ success: false, message: error });
+		}
+	};
 
-  getAllUsers = async (req, res) => {
-    try {
-      const data = await User.findAll({
-        attributes: ["id", "userName", "mail"],
-      });
-      res.status(200).send({ success: true, message: data });
-    } catch (error) {
-      res.status(400).send({ success: false, message: error });
-    }
-  };
+	getAllUsers = async (req, res) => {
+		try {
+			const data = await User.findAll({
+				attributes: ["id", "userName", "mail"],
+			});
+			res.status(200).send({ success: true, message: data });
+		} catch (error) {
+			res.status(400).send({ success: false, message: error });
+		}
+	};
 
-  getUserById = async (req, res) => {
-    try {
-      const { id } = req.params;
-      const data = await User.findOne({
-        where: {
-          id,
-        },
-        attributes: ["id", "userName", "mail"],
-      });
-      res.status(200).send({ success: true, message: data });
-    } catch (error) {
-      res.status(400).send({ success: false, message: error });
-    }
-  };
+	getUserById = async (req, res) => {
+		try {
+			const { id } = req.params;
+			const data = await User.findOne({
+				where: {
+					id,
+				},
+				attributes: ["id", "userName", "mail"],
+			});
+			res.status(200).send({ success: true, message: data });
+		} catch (error) {
+			res.status(400).send({ success: false, message: error });
+		}
+	};
 
-  updateUser = async (req, res) => {
-    try {
-      const { id } = req.params;
-      const { userName, mail } = req.body;
-      const data = await User.update({ userName, mail }, { where: { id } });
-      res.status(200).send({ success: true, message: data });
-    } catch (error) {
-      res.status(400).send({ success: false, message: error });
-    }
-  };
+	updateUser = async (req, res) => {
+		try {
+			const { id } = req.params;
+			const { userName, mail } = req.body;
+			const data = await User.update({ userName, mail }, { where: { id } });
+			res.status(200).send({ success: true, message: data });
+		} catch (error) {
+			res.status(400).send({ success: false, message: error });
+		}
+	};
 
-  deleteUser = async (req, res) => {
-    try {
-      const { id } = req.params;
-      const data = await User.destroy({ where: { id } });
-      // if (data === 0) {
-      //   res
-      //     .status(204)
-      //     .send({ success: true, message: "el usuario no existe" });
-      // }
-      if (data === 0) throw new Error("No existe el usuario a eliminar");
-      res.status(200).send({ success: true, message: data });
-    } catch (error) {
-      res.status(400).send({ success: false, message: error.message });
-    }
-  };
-  login = async (req, res) => {
-    try {
-      const { mail, password } = req.body;
-      const data = await User.findOne({ where: { mail } });
-      if (data === null) throw new Error("Credenciales chucu");
-      const comparePass = await data.validatePassword(password);
-      if (comparePass === false) throw new Error("Credenciales chucu");
+	deleteUser = async (req, res) => {
+		try {
+			const { id } = req.params;
+			const data = await User.destroy({ where: { id } });
+			// if (data === 0) {
+			//   res
+			//     .status(204)
+			//     .send({ success: true, message: "el usuario no existe" });
+			// }
+			if (data === 0) throw new Error("No existe el usuario a eliminar");
+			res.status(200).send({ success: true, message: data });
+		} catch (error) {
+			res.status(400).send({ success: false, message: error.message });
+		}
+	};
+	login = async (req, res) => {
+		try {
+			const { userName, password } = req.body;
+			const data = await User.findOne({ where: { userName } });
+			if (data === null) throw new Error("Credenciales chucu");
+			const comparePass = await data.validatePassword(password);
+			if (comparePass === false) throw new Error("Credenciales chucu");
 
-      const payload = {
-        id: data.id,
-        userName: data.userName,
-      };
+			const payload = {
+				id: data.id,
+				userName: data.userName,
+			};
 
-      const token = generateToken(payload);
-      console.log(`🚀 ~ UserControllers ~ login= ~ token:`, token);
-      res.cookie("token", token);
-      res
-        .status(200)
-        .send({ success: true, message: "usuario ligueado con exito" });
-    } catch (error) {
-      res.status(400).send({ success: false, message: error.message });
-    }
-  };
-  me = async (req, res) => {
-    try {
-      const { user } = req;
-      res.status(200).send({ success: true, message: user });
-    } catch (error) {
-      res.status(400).send({ success: false, message: error.message });
-    }
-  };
+			const token = generateToken(payload);
+			console.log(`🚀 ~ UserControllers ~ login= ~ token:`, token);
+			res.cookie("token", token);
+			res
+				.status(200)
+				.send({ success: true, message: "usuario ligueado con exito" });
+		} catch (error) {
+			res.status(400).send({ success: false, message: error.message });
+		}
+	};
+	me = async (req, res) => {
+		try {
+			const { user } = req;
+			res.status(200).send({ success: true, message: user });
+		} catch (error) {
+			res.status(400).send({ success: false, message: error.message });
+		}
+	};
 }
 
 export default UserControllers;

@@ -6,10 +6,13 @@ const moviesControllers = new MoviesControllers();
 
 const moviesRoutes = Router();
 
-moviesRoutes.use(validateLogin);
-moviesRoutes.post("/", moviesControllers.createMovie);
-moviesRoutes.get("/", moviesControllers.getAllMovies);
+
 moviesRoutes.get("/:id", moviesControllers.getMovieById);
+moviesRoutes.get("/", moviesControllers.getAllMovies);
+
+moviesRoutes.use(validateLogin);
+
+moviesRoutes.post("/", moviesControllers.createMovie);
 moviesRoutes.put("/:id", moviesControllers.updateMovie);
 moviesRoutes.delete("/:id", moviesControllers.deleteMovie);
 

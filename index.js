@@ -5,9 +5,10 @@ import cookieParser from "cookie-parser"
 import dbConnection from "./src/dbConnection/dbConnection.js";
 import {SERVER_PORT} from "./src/config/config.js"
 import { seed } from "./src/seed/seed.js";
+import cors from "cors"
 
 const app = express();
-
+app.use(cors())
 app.use(morgan("tiny"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

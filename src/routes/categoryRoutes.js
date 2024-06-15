@@ -6,10 +6,12 @@ const categoryControllers = new CategoryControllers();
 
 const categoryRoutes = Router();
 
-categoryRoutes.use(validateLogin);
-categoryRoutes.post("/", categoryControllers.createCategory);
-categoryRoutes.get("/", categoryControllers.getAllCategories);
 categoryRoutes.get("/:id", categoryControllers.getCategoryById);
+categoryRoutes.get("/", categoryControllers.getAllCategories);
+
+categoryRoutes.use(validateLogin);
+
+categoryRoutes.post("/", categoryControllers.createCategory);
 categoryRoutes.put("/:id", categoryControllers.updateCategory);
 categoryRoutes.delete("/:id", categoryControllers.deleteCategory);
 

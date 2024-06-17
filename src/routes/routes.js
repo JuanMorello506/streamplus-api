@@ -4,6 +4,7 @@ import { logger } from "../middlewares/middlewares.js";
 import categoryRoutes from "./categoryRoutes.js";
 import commentRoutes from "./commentRoutes.js";
 import moviesRoutes from "./movieRoutes.js";
+import favouritesRoutes from "./favouriteRoutes.js";
 
 const routes = Router();
 
@@ -12,5 +13,6 @@ routes.use("/streamplus/user", logger, userRoutes);
 routes.use("/streamplus/category", logger, categoryRoutes);
 routes.use("/streamplus/comment", logger, commentRoutes);
 routes.use("/streamplus/movie", logger, moviesRoutes);
+routes.use("/streamplus/favourites", logger, favouritesRoutes);
 
 export default routes;

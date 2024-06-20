@@ -51,8 +51,24 @@ class FavouriteController{
       res.status(500).json({ message: 'Server error', error });
     }
   };    
-}
 
+  // Verificar si una película está en los favoritos de un usuario
+  isFavourite = async (req, res) => {
+    const { userId, movieId } = req.params;
+    try {
+      const user = await User.findByPk(userId);
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      const movies = await user.getMovies({ where: { id: movieId } });
+      const isFavourite = movies.length > 0;
+      res.json({ isFavourite });
+    } catch (error) {
+      res.status(500).json({ message: 'Server error', error });
+    }
+  };
+
+}
 
 
 export default FavouriteController

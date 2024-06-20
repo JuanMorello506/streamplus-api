@@ -37,7 +37,7 @@ class CommentControllers {
         where: {
             movieId,
           },
-        attributes: ["id", "comment", "rating", "createdAt", "updatedAt", "movieId", "userId"],
+        attributes: ["id", "comment", "rating", "movieId", "userId"],
       });
       res.status(200).send({ success: true, message: data });
     } catch (error) {
@@ -106,8 +106,8 @@ class CommentControllers {
 
   deleteComment = async (req, res) => {
     try {
-      const { id } = req.params;
-      const deleted = await Category.destroy({ where: { id } });
+      const { userId, movieId } = req.params;
+      const deleted = await Category.destroy({ where: { userId, movieId } });
       if (deleted === 0) throw new Error("Comment not found");
       res.status(200).send({ success: true, message: "Comment deleted successfully" });
     } catch (error) {

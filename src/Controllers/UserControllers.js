@@ -92,14 +92,6 @@ class UserControllers {
 			res.status(400).send({ success: false, message: error.message });
 		}
 	};
-	me = async (req, res) => {
-		try {
-			const { user } = req;
-			res.status(200).send({ success: true, message: user });
-		} catch (error) {
-			res.status(400).send({ success: false, message: error.message });
-		}
-	};
 }
 
 export default UserControllers;

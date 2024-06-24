@@ -8,9 +8,10 @@ const userRoutes = Router();
 
 userRoutes.post("/", userController.createUser);
 userRoutes.post("/login", userController.login);
-// userRoutes.use(validateLogin);
+
+userRoutes.use(validateLogin);
+
 userRoutes.get("/", userController.getAllUsers);
-userRoutes.get("/me", userController.me);
 userRoutes.get("/:id", userController.getUserById);
 userRoutes.put("/:id", userController.updateUser);
 userRoutes.delete("/:id", userController.deleteUser);
